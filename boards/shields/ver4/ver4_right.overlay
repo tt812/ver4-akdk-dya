@@ -88,8 +88,9 @@
 &trackpoint_listener {
     zipe_trackpoint: zipe_trackpoint {
         compatible = "zmk,input-processor-runtime";
-        id = <1>; // Trackpoint ID
-        #input-processor-cells = <0>; /* ←追加 */
+        id = <1>;
+        #input-processor-cells = <0>;
+        processor-label = "Trackpoint";
         input-processors = <
             &zip_xy_scaler 1 1
         >;
@@ -99,8 +100,9 @@
 &trackball_split_listener {
     zipe_trackball: zipe_trackball {
         compatible = "zmk,input-processor-runtime";
-        id = <2>; // Trackball Cursor ID
-        #input-processor-cells = <0>; /* ←追加 */
+        id = <2>;
+        #input-processor-cells = <0>;
+        processor-label = "Trackball Cursor";
         input-processors = <
             &zip_temp_layer 5 400
             &zip_xy_scaler 4 7
@@ -109,8 +111,9 @@
 
     zipe_trackball_scroller: zipe_trackball_scroller {
         compatible = "zmk,input-processor-runtime";
-        id = <3>; // Trackball Scroll ID
-        #input-processor-cells = <0>; /* ←追加 */
+        id = <3>;
+        #input-processor-cells = <0>;
+        processor-label = "Trackball Scroll";
         input-processors = <
             &zip_xy_to_scroll_mapper
             &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)
