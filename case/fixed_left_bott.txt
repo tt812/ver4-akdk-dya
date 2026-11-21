@@ -1,0 +1,1 @@
+fixed_left_bottom_case.stl

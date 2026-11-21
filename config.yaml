@@ -1,0 +1,48 @@
+draw_config:
+  check_layers: true
+parse_config:
+  raw_binding_map:
+    # あなたの定義に基づき、&kp を含めたフルネームで確実に一致させます
+    "&kp JP_DQUOTE": "\""
+    "&kp JP_AMPERSAND": "&"
+    "&kp JP_QUOTE": "'"
+    "&kp JP_EQUAL": "="
+    "&kp JP_CARET": "^"
+    "&kp JP_YEN": "¥"
+    "&kp JP_PLUS": "+"
+    "&kp JP_TILDE": "~"
+    "&kp JP_PIPE": "|"
+    "&kp JP_AT": "@"
+    "&kp JP_COLON": ":"
+    "&kp JP_ASTERISK": "*"
+    "&kp JP_BACKQUOTE": "`"
+    "&kp JP_UNDERSCORE": "_"
+    "&kp JP_LBRACKET": "["
+    "&kp JP_RBRACKET": "]"
+    "&kp JP_LPAREN": "("
+    "&kp JP_RPAREN": ")"
+    "&kp JP_LBRACE": "{"
+    "&kp JP_RBRACE": "}"
+    "&kp JP_KANA": "かな"
+    "&kp JP_EISU": "英数"
+    "&kp JP_HANZEN": "半/全"
+
+    # その他、長押しキーなどの調整
+    "&mt LEFT_SHIFT ENTER": "Shift/Ent"
+    "&mt RIGHT_SHIFT JP_UNDERSCORE": "Shift/_"
+    "&mt LEFT_WIN BACKSPACE": "Win/BS"
+    "&mt RIGHT_CONTROL ESCAPE": "Ctrl/Esc"
+    "&lt 1 SPACE": "L1/Space"
+    "&lt 2 INTERNATIONAL_5": "L2/無変換"
+    "&lt 4 TAB": "L4/Tab"
+    "&kp 0x89": "_"
+    "&kp 0x87": "¥"
+    "2 INTERNATIONAL_5": "L2/無変換"
+    "4 TAB": "L4/Tab"
+
+    # BT名変更
+    "&bt BT_SEL 0": "Win/BT0"
+    "&bt BT_SEL 1": "Win/BT1"
+    "&bt BT_SEL 2": "Win/BT2"
+    "&bt BT_SEL 3": "iPad/BT3"
+    "&bt BT_SEL 4": "iPad/BT4"

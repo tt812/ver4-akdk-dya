@@ -1,0 +1,14 @@
+
+file_format: "1"
+id: ver4
+name: ver4
+type: shield
+features:
+  - keys
+  - studio
+outputs:
+  - usb
+  - ble
+siblings:
+  - ver4_left
+  - ver4_right

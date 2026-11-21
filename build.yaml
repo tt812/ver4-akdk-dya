@@ -1,0 +1,13 @@
+
+include:
+  - board: akdk_bt1
+    shield: ver4_left
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_HID_REPORT_TYPE_NKRO=n
+  - board: akdk_bt1
+    shield: ver4_right
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_HID_REPORT_TYPE_NKRO=n
+  - board: akdk_bt1
+    shield: settings_reset
+    
