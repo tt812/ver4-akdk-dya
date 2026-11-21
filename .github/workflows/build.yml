@@ -1,1 +1,5 @@
-
+name: Build
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  build:
+    uses: zmkfirmware/zmk-build-action/.github/workflows/build-user-config.yml@v3.0.0
