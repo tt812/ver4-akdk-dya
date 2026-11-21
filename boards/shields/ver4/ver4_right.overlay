@@ -91,6 +91,7 @@
         id = <1>;
         #input-processor-cells = <0>;
         processor-label = "Trackpoint";
+        x-codes = <0>;
         input-processors = <
             &zip_xy_scaler 1 1
         >;
@@ -103,6 +104,7 @@
         id = <2>;
         #input-processor-cells = <0>;
         processor-label = "Trackball Cursor";
+        x-codes = <0>;
         input-processors = <
             &zip_temp_layer 5 400
             &zip_xy_scaler 4 7
@@ -114,6 +116,7 @@
         id = <3>;
         #input-processor-cells = <0>;
         processor-label = "Trackball Scroll";
+        x-codes = <0>;
         input-processors = <
             &zip_xy_to_scroll_mapper
             &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)
