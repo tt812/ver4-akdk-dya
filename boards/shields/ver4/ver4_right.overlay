@@ -78,7 +78,7 @@
     zipe_trackpoint: zipe_trackpoint {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "Trackpoint";
+        processor-label = "TP";
         x-codes = <INPUT_REL_X>;
         y-codes = <INPUT_REL_Y>;
     };
@@ -86,7 +86,7 @@
     zipe_trackball: zipe_trackball {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "Trackball Cursor";
+        processor-label = "TB_C";
         x-codes = <INPUT_REL_X>;
         y-codes = <INPUT_REL_Y>;
     };
@@ -94,7 +94,7 @@
     zipe_trackball_scroller: zipe_trackball_scroller {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
-        processor-label = "Trackball Scroll";
+        processor-label = "TB_S";
         x-codes = <INPUT_REL_HWHEEL>;
         y-codes = <INPUT_REL_WHEEL>;
     };
