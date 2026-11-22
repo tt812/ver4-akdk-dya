@@ -92,9 +92,7 @@
         processor-label = "Trackpoint";
         x-codes = <0>;
         y-codes = <0>;
-        input-processors = <
-            &zip_xy_scaler 1 1
-        >;
+        /* 削除: input-processors = < &zip_xy_scaler 1 1 >; */
     };
 };
 
@@ -105,11 +103,18 @@
         processor-label = "Trackball Cursor";
         x-codes = <0>;
         y-codes = <0>;
-        input-processors = <
-            &zip_temp_layer 5 400
-            &zip_xy_scaler 4 7
-        >;
+        /* 削除: input-processors = < &zip_temp_layer 5 400 &zip_xy_scaler 4 7 >; */
     };
+
+    zipe_trackball_scroller: zipe_trackball_scroller {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "Trackball Scroll";
+        x-codes = <0>;
+        y-codes = <0>;
+        /* 削除: input-processors = < &zip_xy_to_scroll_mapper &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) &zip_scroll_scaler 2 10 >; */
+    };
+};
 
     zipe_trackball_scroller: zipe_trackball_scroller {
         compatible = "zmk,input-processor-runtime";
