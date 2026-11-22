@@ -30,7 +30,3 @@ manifest:
       remote: sekigon-gonnoc
   self:
     path: config
-    - name: zmk-driver-lpps
-      remote: sekigon-gonnoc
-  self:
-    path: config
