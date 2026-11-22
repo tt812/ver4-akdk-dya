@@ -16,7 +16,7 @@ manifest:
       revision: zmk-v0.3.0.0
     - name: zmk-module-battery-history
       remote: cormoran
-      revision: zmk-v0.3.0.0
+      revision: main
     - name: zmk-module-settings-rpc
       remote: cormoran
       revision: zmk-v0.3.0.0
@@ -26,6 +26,10 @@ manifest:
     - name: zmk-driver-paw3222
       remote: sekigon-gonnoc
       revision: main
+    - name: zmk-driver-lpps
+      remote: sekigon-gonnoc
+  self:
+    path: config
     - name: zmk-driver-lpps
       remote: sekigon-gonnoc
   self:
