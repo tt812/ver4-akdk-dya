@@ -87,3 +87,50 @@
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
         processor-label = "Trackball Cursor";
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
+    };
+
+    zipe_trackball_scroller: zipe_trackball_scroller {
+        compatible = "zmk,input-processor-runtime";
+        #input-processor-cells = <0>;
+        processor-label = "Trackball Scroll";
+        x-codes = <INPUT_REL_HWHEEL>;
+        y-codes = <INPUT_REL_WHEEL>;
+    };
+}; /* ← ここでルートノードを正しく閉じる */
+
+&physical_layout0 {
+    kscan = <&kscan0>;
+    transform = <&default_transform>;
+};
+
+&pinctrl {
+    i2c0_default: i2c0_default {
+      group1 {
+        psels = <NRF_PSEL(TWIM_SDA, 0, 12)>, <NRF_PSEL(TWIM_SCL, 1, 9)>;
+      };
+    };
+    i2c0_sleep: i2c0_sleep {
+      group1 {
+        psels = <NRF_PSEL(TWIM_SDA, 0, 12)>, <NRF_PSEL(TWIM_SCL, 1, 9)>;
+        low-power-enable;
+      };
+    };
+};
+
+&i2c0 {
+    status = "okay";
+    compatible = "nordic,nrf-twim";
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-names = "default", "sleep";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    zephyr,concat-buf-size = <32>;
+    trackpoint: trackpoint@57 {
+      status = "okay";
+      compatible = "lpps";
+      reg = <0x57>;
+      irq-gpios = <&gpio0 13 GPIO_PULL_UP>;
+    };
+};
