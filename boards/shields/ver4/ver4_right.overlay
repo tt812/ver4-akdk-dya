@@ -88,7 +88,6 @@
 &trackpoint_listener {
     zipe_trackpoint: zipe_trackpoint {
         compatible = "zmk,input-processor-runtime";
-        id = <1>;
         #input-processor-cells = <0>;
         processor-label = "Trackpoint";
         x-codes = <0>;
@@ -102,7 +101,6 @@
 &trackball_split_listener {
     zipe_trackball: zipe_trackball {
         compatible = "zmk,input-processor-runtime";
-        id = <2>;
         #input-processor-cells = <0>;
         processor-label = "Trackball Cursor";
         x-codes = <0>;
@@ -115,7 +113,6 @@
 
     zipe_trackball_scroller: zipe_trackball_scroller {
         compatible = "zmk,input-processor-runtime";
-        id = <3>;
         #input-processor-cells = <0>;
         processor-label = "Trackball Scroll";
         x-codes = <0>;
