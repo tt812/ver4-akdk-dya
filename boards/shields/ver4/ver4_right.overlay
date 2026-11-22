@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include "layouts.dtsi"
 #include <dt-bindings/zmk/pointing.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
     chosen {
@@ -25,7 +26,6 @@
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         wakeup-source;
-
         diode-direction = "col2row";
         row-gpios
             = <&akdk_d 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
@@ -43,8 +43,6 @@
             ;
     };
 
-    /* --- DYA Studio Runtime Input Processors --- */
-
     trackpoint_listener: trackpoint_listener {
         compatible = "zmk,input-listener";
         device = <&trackpoint>;
@@ -54,7 +52,6 @@
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
-
         trackball_split: trackball_split@0 {
             compatible = "zmk,input-split";
             reg = <0>;
@@ -65,17 +62,12 @@
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
         status = "okay";
-
-        /* normal cursor movement */
         input-processors = <
             &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
             &zipe_trackball
         >;
-
-        /* scroll mode */
         scroller {
             layers = <6>;
-
             input-processors = <
                 &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
                 &zipe_trackball_scroller
@@ -84,15 +76,13 @@
     };
 };
 
-/* --- Runtime Input Processor Definitions --- */
 &trackpoint_listener {
     zipe_trackpoint: zipe_trackpoint {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
         processor-label = "Trackpoint";
-        x-codes = <0>;
-        y-codes = <0>;
-        /* 削除: input-processors = < &zip_xy_scaler 1 1 >; */
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
     };
 };
 
@@ -101,32 +91,16 @@
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
         processor-label = "Trackball Cursor";
-        x-codes = <0>;
-        y-codes = <0>;
-        /* 削除: input-processors = < &zip_temp_layer 5 400 &zip_xy_scaler 4 7 >; */
+        x-codes = <INPUT_REL_X>;
+        y-codes = <INPUT_REL_Y>;
     };
 
     zipe_trackball_scroller: zipe_trackball_scroller {
         compatible = "zmk,input-processor-runtime";
         #input-processor-cells = <0>;
         processor-label = "Trackball Scroll";
-        x-codes = <0>;
-        y-codes = <0>;
-        /* 削除: input-processors = < &zip_xy_to_scroll_mapper &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT) &zip_scroll_scaler 2 10 >; */
-    };
-};
-
-    zipe_trackball_scroller: zipe_trackball_scroller {
-        compatible = "zmk,input-processor-runtime";
-        #input-processor-cells = <0>;
-        processor-label = "Trackball Scroll";
-        x-codes = <0>;
-        y-codes = <0>;
-        input-processors = <
-            &zip_xy_to_scroll_mapper
-            &zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)
-            &zip_scroll_scaler 2 10
-        >;
+        x-codes = <INPUT_REL_HWHEEL>;
+        y-codes = <INPUT_REL_WHEEL>;
     };
 };
 
@@ -137,18 +111,15 @@
 
 &pinctrl {
     i2c0_default: i2c0_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 12)>,
-                <NRF_PSEL(TWIM_SCL, 1, 9)>;
-        };
+      group1 {
+        psels = <NRF_PSEL(TWIM_SDA, 0, 12)>, <NRF_PSEL(TWIM_SCL, 1, 9)>;
+      };
     };
-
     i2c0_sleep: i2c0_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 12)>,
-                <NRF_PSEL(TWIM_SCL, 1, 9)>;
-            low-power-enable;
-        };
+      group1 {
+        psels = <NRF_PSEL(TWIM_SDA, 0, 12)>, <NRF_PSEL(TWIM_SCL, 1, 9)>;
+        low-power-enable;
+      };
     };
 };
 
@@ -160,12 +131,11 @@
     pinctrl-names = "default", "sleep";
     clock-frequency = <I2C_BITRATE_FAST>;
     zephyr,concat-buf-size = <32>;
-
     trackpoint: trackpoint@57 {
-        status = "okay";
-        compatible = "lpps";
-        reg = <0x57>;
-        irq-gpios = <&gpio0 13 GPIO_PULL_UP>;
+      status = "okay";
+      compatible = "lpps";
+      reg = <0x57>;
+      irq-gpios = <&gpio0 13 GPIO_PULL_UP>;
     };
 };
   
