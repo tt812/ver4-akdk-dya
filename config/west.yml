@@ -7,13 +7,13 @@ manifest:
     - name: sekigon-gonnoc
       url-base: https://github.com/sekigon-gonnoc
   projects:
-    - name: zmk
+- name: zmk
       remote: cormoran
       revision: v0.3-branch+dya
       import: app/west.yml
     - name: zmk-module-runtime-input-processor
       remote: cormoran
-      revision: main
+      revision: zmk-v0.3.0.0
     - name: zmk-driver-paw3222
       remote: sekigon-gonnoc
       revision: main
